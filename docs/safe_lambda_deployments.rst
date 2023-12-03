@@ -138,8 +138,9 @@ resource:
           Value: !Sub "${MyLambdaFunction}:live"
         - Name: FunctionName
           Value: !Ref MyLambdaFunction
-        - Name: ExecutedVersion
-          Value: !GetAtt MyLambdaFunction.Version.Version
+        - Name: ExecutedVersion          
+          Value:
+            Fn::GetAtt: [ MyLambdaFunction, Version.Version ]          
       EvaluationPeriods: 2
       MetricName: Errors
       Namespace: AWS/Lambda
